@@ -1,0 +1,19 @@
+================================
+Project 3B: File System Analysis
+================================
+Name: Eric Sehun Oh
+UID: 304184918
+===================
+
+make 
+	- runs command 'python lab3b.py > lab3b_check.txt' which creates lab3b_check.txt with ordering issues
+
+make check
+	- sorts the lab3b_check.txt file with default flags and writes to same file
+	- creates a file 'sorted_correct.txt' which is the lab3b_correct.txt file sorted with default flags and checks both with diff
+
+make dist 
+	- makes tarball
+
+make clean
+	- removes sorted_correct.txt and lab3b_check.txt

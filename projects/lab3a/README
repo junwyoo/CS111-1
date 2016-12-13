@@ -1,0 +1,40 @@
+============================
+Project 3A: File System Dump
+============================
+
+Name: Eric Sehun Oh
+UID: 304184918
+
+============================
+
+Contents
+	c_csv/					Correct, sample csv files from spec
+	|- super.csv
+	|- group.csv
+	|- bitmap.csv
+	|- inode.csv
+	|- directory.csv
+	|- indirect.csv
+
+	lab3a.c - implementation for lab3a
+
+	README	- what you're reading
+
+	disk-image - disk provided from spec
+
+	Makefile
+		- makefile containing commands as follows
+
+			make - builds the target ./lab3a
+			make run - runs the program with "./lab3a disk-image" and generates csv files
+			make check - runs diff commands on csv files generated vs provided
+			make dist - makes tarball
+			make clean - removes program and csv files and restores to original state
+
+============================
+
+Note:
+
+	The bitmap.csv file when first created is not sorted and thus must be sorted.
+
+	The 'make check' command creates a sorted_bitmap.csv file in current directory that is sorted numerically (since sort doesn't offer a hexadecimal sort) of the provided file and compares it to the generated bitmap.csv file after it is sorted in place.

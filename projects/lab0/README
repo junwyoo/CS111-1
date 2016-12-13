@@ -1,0 +1,32 @@
+----------------------
+Command Line Arguments
+----------------------
+
+Example:  ./lab0 --input=test_input.txt --output=test_output.txt
+
+--segfault | --catch | --input=path/to/file | --output=path/to/file 
+  --segfault	triggers a segmentation fault 
+  --catch 		catches SIGSEGV 
+  --input		specifies input file to read from
+  --output 		specifies output file to write to
+
+-------------------------
+Design Decisions & Issues
+-------------------------
+
+Q. How does the implementation parse command line arguments?
+
+A. It uses the getopt_long function for all flags. For the --segfault flag, the getopt_long function sets a flag in the long option structure equal to the val field in the option structure. In this case, the value of the val field will reflect the ASCII value of the character 's' which is 115. For the --input and --output flags, the value will be accessed through the optarg values.
+
+
+*When ran with all four arguments, the test output file will be created but will not contain the same contents as the input file since the program will exit with code 3.
+
+--------------------------------
+Smoke Testing through make check
+--------------------------------
+
+First test will test for solely the --input flag which should create a test input file called test_input.txt and print the contents which will be "This is a test file for project zero" to the standard output.
+
+Second test will test for both the --input and --output flags which will utilize the same input file from the first test and copy the contents to an output file called test_output.txt. It will then run the diff command between two files which should return nothing if the two files are the same or an error message that the two files are indeed different.
+
+Third test will test for both the --catch and --segfault flags which should display that the SIGSEGV signal was caught. It will check that the exit code returned is 3 also.

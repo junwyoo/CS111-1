@@ -1,0 +1,35 @@
+--------------------
+Personal Information
+--------------------
+
+Name: Eric Sehun Oh
+ID: 304184918
+
+----------------------
+Command Line Arguments
+----------------------
+
+./server
+	--port		port for socket; should be the same port number for client
+	--encrypt 	data passed between network is encrypted s
+
+./client
+	--port		port for socket; argument required
+	--log		creates log file; argument required
+	--encrypt	data passed between network is encrypted
+
+Example: ./server --port=5000 --encrypt
+Example: ./client --port=5000 --log=log.txt --encrypt
+
+-------------------------
+Design Decisions & Issues
+-------------------------
+
+The encryption is done using the Blowfish encryption algoritm
+
+*Regarding EOF and error the network connections will be closed and return the correct exit codes. However, when an 'exit' command is sent over the network, the server will exit after an extra read and the client will close after a few more failed reads from server. 
+
+*The log file created when using the --log flag will write 1 byte/char at a time with each byte on a new line.
+
+*The server and client should either both use the --encrypt flag or both NOT use the --encrypt flag. When mismatched, the behavior has not been extensively tested. 
+

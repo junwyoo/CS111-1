@@ -1,0 +1,18 @@
+----------------------
+Command Line Arguments
+----------------------
+
+Example: ./lab1a
+Example: ./lab1a --shell
+
+  --shell		forks a process for the shell
+
+-------------------------
+Design Decisions & Issues
+-------------------------
+
+The implementation does not set up a signal handler for the ^C and instead treats ^C as a character just like <cr>. When the ^C character is encountered by checking the character read, the kill() function is called to the sending the SIGINT signal to the shell process.
+
+The implementation does not show the exit status for the EOF from shell exit.
+
+The parent's thread is the thread which reads input from the keyboard, echoes it to stdout, and forwards it to the shell. 
